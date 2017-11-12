@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class KiwifruitScanned extends Model
 {
+    protected $table = 'kiwifruit_scanned';
+    
     protected $fillable = ['kiwifruit_id',
         'sample',
         'area',
