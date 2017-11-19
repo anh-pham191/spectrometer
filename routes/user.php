@@ -21,7 +21,7 @@
 
     });
 
-    \Route::group(['middleware' => ['user.auth']], function () {
-
-    });
+//    \Route::group(['middleware' => ['user.auth']], function () {
+//
+//    });
 });
