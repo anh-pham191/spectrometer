@@ -52,4 +52,19 @@ Dashboard
             @endforeach
         </table>
     @endforeach
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Link</th>
+            </tr>
+            @foreach($tempLambs as $tempLamb)
+
+            <tr>
+                <td>{!! $tempLamb->name !!}</td>
+                <td><a href="{!! $tempLamb->excel_file !!}">Download</a></td>
+            </tr>
+            @endforeach
+
+        </table>
 @stop
