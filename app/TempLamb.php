@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TempLamb extends Model
 {
-    protected $fillable = ['name', 'excel_file'];
+    protected $fillable = ['name', 'excel_file', 'view_online'];
 }
