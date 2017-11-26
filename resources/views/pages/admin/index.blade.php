@@ -56,13 +56,15 @@ Dashboard
         <table>
             <tr>
                 <th>Name</th>
-                <th>Link</th>
+                <th>Link download</th>
+                <th>View online</th>
             </tr>
             @foreach($tempLambs as $tempLamb)
 
             <tr>
                 <td>{!! $tempLamb->name !!}</td>
-                <td><a href="{!! $tempLamb->excel_file !!}">Download</a></td>
+                <td><a href="{{ $tempLamb->csv_file }}">Download</a></td>
+                <td><a href="{{ asset($tempLamb->view_online) }}">View online</a></td>
             </tr>
             @endforeach
 
