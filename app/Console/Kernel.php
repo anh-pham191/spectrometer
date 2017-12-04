@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Testing\Execute::class,
         \App\Console\Commands\MakeTempLamb::class,
         \App\Console\Commands\MakeTempMilk::class,
+        \App\Console\Commands\MakeScannedItem::class
     ];
 
     /**
