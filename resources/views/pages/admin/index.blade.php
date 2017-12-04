@@ -5,10 +5,11 @@
 
 @section('styles')
     <style>
-        table{
+        table {
             border-collapse: collapse;
             width: 100%;
         }
+
         td, th {
             border: 1px solid #ddd;
             padding: 8px;
@@ -21,17 +22,17 @@
 @stop
 
 @section('title')
-{{ config('site.name') }} | Admin | Dashboard
+    {{ config('site.name') }} | Admin | Dashboard
 @stop
 
 @section('header')
-Dashboard
+    Dashboard
 @stop
 
 @section('content')
     @foreach($kiwifruits as $kiwifruit)
         <h1>{!! $kiwifruit->name !!}</h1>
-        <table >
+        <table>
             <tr>
                 <th>Sample</th>
                 <th>Area</th>
@@ -52,57 +53,25 @@ Dashboard
             @endforeach
         </table>
     @endforeach
-    <h1>Lamb</h1>
+    <h1>NIRScan product</h1>
+    @foreach($scannedItems as $scannedItem)
+        <h2>{!! $scannedItem->name !!}</h2>
+        <img width="40%" src="{!! $scannedItem->image !!}">
         <table>
             <tr>
                 <th>Name</th>
                 <th>Link download</th>
                 <th>View online</th>
             </tr>
-            @foreach($tempLambs as $tempLamb)
+            @foreach($tempLambs->where('scanned_item_id', $scannedItem->id) as $tempLamb)
 
-            <tr>
-                <td>{!! $tempLamb->name !!}</td>
-                <td><a href="{{ $tempLamb->excel_file }}">Download</a></td>
-                <td><a href="{{ asset($tempLamb->view_online) }}">View online</a></td>
-            </tr>
+                <tr>
+                    <td>{!! $tempLamb->name !!}</td>
+                    <td><a href="{{ $tempLamb->excel_file }}">Download</a></td>
+                    <td><a href="{{ asset($tempLamb->view_online) }}">View online</a></td>
+                </tr>
             @endforeach
 
         </table>
-
-    <h1>Milk Biscuits</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Link download</th>
-            <th>View online</th>
-        </tr>
-        @foreach($tempMilkBiscuits as $tempMilkBiscuit)
-
-            <tr>
-                <td>{!! $tempMilkBiscuit->name !!}</td>
-                <td><a href="{{ $tempMilkBiscuit->excel_file }}">Download</a></td>
-                <td><a href="{{ asset($tempMilkBiscuit->view_online) }}">View online</a></td>
-            </tr>
-        @endforeach
-
-    </table>
-
-    <h1>Milk Powder</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Link download</th>
-            <th>View online</th>
-        </tr>
-        @foreach($tempMilkPowders as $tempMilkPowder)
-
-            <tr>
-                <td>{!! $tempMilkPowder->name !!}</td>
-                <td><a href="{{ $tempMilkPowder->excel_file }}">Download</a></td>
-                <td><a href="{{ asset($tempMilkPowder->view_online) }}">View online</a></td>
-            </tr>
-        @endforeach
-
-    </table>
+    @endforeach
 @stop
