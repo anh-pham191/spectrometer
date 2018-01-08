@@ -12,11 +12,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        User::create([
-            'name' => 'test',
-            'email' => 'test@example.com',
-            'password' => 'test'
-        ]);
+       
         $kiwifruits = Kiwifruit::all();
         $scannedItems = ScannedItem::all();
         $tempLambs = TempLamb::all();
