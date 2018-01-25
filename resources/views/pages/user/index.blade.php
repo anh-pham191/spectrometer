@@ -46,6 +46,9 @@
 
 @section('content')
     <div class="container">
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <h1>Hello {!! \Illuminate\Support\Facades\Auth::user()->email !!}</h1>
+        @endif
         <p class="content">
         <div class="title">Spectrometer Data</div>
         @if(\Illuminate\Support\Facades\Auth::check())
