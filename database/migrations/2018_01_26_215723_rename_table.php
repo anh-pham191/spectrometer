@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddScannedItemToTempLambTable extends Migration
+class RenameTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddScannedItemToTempLambTable extends Migration
      */
     public function up()
     {
-        Schema::table('temp_lambs', function (Blueprint $table) {
-   
-        });
+        Schema::rename('temp_lambs', 'items');
     }
 
     /**
@@ -25,6 +23,6 @@ class AddScannedItemToTempLambTable extends Migration
      */
     public function down()
     {
-//        Schema::dropColumn('scanned_item_id');
+        Schema::rename('items', 'temp_lambs');
     }
 }

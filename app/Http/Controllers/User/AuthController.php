@@ -7,6 +7,8 @@ use App\Http\Requests\User\SignUpRequest;
 use App\Models\User;
 use App\Services\UserServiceInterface;
 use App\Http\Requests\User\SignInRequest;
+use App\Type;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -36,7 +38,8 @@ class AuthController extends Controller
 
     public function getSignUp()
     {
-        return view('pages.user.auth.signup', [
+        $types = Type::where('id','!=', 1)->get();
+        return view('pages.user.auth.signup', ['types' => $types
         ]);
     }
 

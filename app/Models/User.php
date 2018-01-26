@@ -62,6 +62,7 @@ class User extends AuthenticatableBase
         'api_access_token',
         'profile_image_id',
         'last_notification_id',
+        'type'
     ];
 
     /**
@@ -81,6 +82,10 @@ class User extends AuthenticatableBase
     /*
      * API Presentation
      */
+
+    public function type(){
+        return $this->belongsTo('App\Type');
+    }
 
     public function toAPIArray()
     {

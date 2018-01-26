@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddScannedItemToTempLambTable extends Migration
+class CreateUserTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddScannedItemToTempLambTable extends Migration
      */
     public function up()
     {
-        Schema::table('temp_lambs', function (Blueprint $table) {
-   
+        Schema::create('types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +27,6 @@ class AddScannedItemToTempLambTable extends Migration
      */
     public function down()
     {
-//        Schema::dropColumn('scanned_item_id');
+        Schema::dropIfExists('types');
     }
 }

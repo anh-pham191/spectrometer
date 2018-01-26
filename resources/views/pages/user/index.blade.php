@@ -48,10 +48,10 @@
     <div class="container">
         @if(\Illuminate\Support\Facades\Auth::check())
             <h1>Hello {!! \Illuminate\Support\Facades\Auth::user()->email !!}</h1>
-        @endif
+            <a href="{!! \Illuminate\Support\Facades\Auth::logout() !!}">Log out</a>
+
         <p class="content">
         <div class="title">Spectrometer Data</div>
-        @if(\Illuminate\Support\Facades\Auth::check())
             @foreach($kiwifruits as $kiwifruit)
                 <h1>{!! $kiwifruit->name !!}</h1>
                 <table>
@@ -85,18 +85,21 @@
                         <th>Link download</th>
                         <th>View online</th>
                     </tr>
-                    @foreach($tempLambs->where('scanned_item_id', $scannedItem->id) as $tempLamb)
+                    @foreach($tempLambs as $tempLamb)
+                        @foreach($tempLamb as $lamb)
+                            <tr>
+                                <td>{!! $lamb->name!!}</td>
+                                {{--                            <td><a href="{{ $tempLamb['excel_file'] }}">Download</a></td>--}}
+                                {{--                            <td><a href="{{ $tempLamb['view_online'] }}">View online</a></td>--}}
+                            </tr>
+                            @endforeach
 
-                        <tr>
-                            <td>{!! $tempLamb->name !!}</td>
-                            <td><a href="{{ $tempLamb->excel_file }}">Download</a></td>
-                            <td><a href="{{ asset($tempLamb->view_online) }}">View online</a></td>
-                        </tr>
                     @endforeach
 
                 </table>
             @endforeach
         @else
+            <div class="title">Spectrometer Data</div>
             <p><a href="/signin">Log in</a></p>
         @endif
     </div>
