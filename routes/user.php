@@ -2,6 +2,8 @@
 
 \Route::group(['middleware' => ['user.values']], function () {
     \Route::get('/', 'User\IndexController@index');
+    \Route::get('/upload', 'User\IndexController@getUpload');
+    \Route::post('/upload', 'User\IndexController@postUpload');
 
     \Route::group(['middleware' => ['user.guest']], function () {
         \Route::get('signin', 'User\AuthController@getSignIn');

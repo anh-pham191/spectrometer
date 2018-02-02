@@ -51,53 +51,57 @@
             <a href="{!! \Illuminate\Support\Facades\Auth::logout() !!}">Log out</a>
 
         <p class="content">
-        <div class="title">Spectrometer Data</div>
-            @foreach($kiwifruits as $kiwifruit)
-                <h1>{!! $kiwifruit->name !!}</h1>
-                <table>
-                    <tr>
-                        <th>Sample</th>
-                        <th>Area</th>
-                        <th>Scan</th>
-                        <th>Calories</th>
-                        <th>Carbs</th>
-                        <th>Water</th>
-                    </tr>
-                    @foreach($kiwifruit->kiwifruitscanned as $scan)
+        @if(count($kiwifruits) + count($scannedItems) > 0 )
+            <div class="title">Spectrometer Data</div>
+                @foreach($kiwifruits as $kiwifruit)
+                    <h1>{!! $kiwifruit->name !!}</h1>
+                    <table>
                         <tr>
-                            <td>{!! $scan->sample !!}</td>
-                            <td>{!! $scan->area !!}</td>
-                            <td>{!! $scan->scan !!}</td>
-                            <td>{!! $scan->calories !!}</td>
-                            <td>{!! $scan->carbs !!}</td>
-                            <td>{!! $scan->water !!}</td>
+                            <th>Sample</th>
+                            <th>Area</th>
+                            <th>Scan</th>
+                            <th>Calories</th>
+                            <th>Carbs</th>
+                            <th>Water</th>
                         </tr>
-                    @endforeach
-                </table>
-            @endforeach
-            <h1>NIRScan product</h1>
-            @foreach($scannedItems as $scannedItem)
-                <h2>{!! $scannedItem->name !!}</h2>
-                <img width="40%" src="{!! $scannedItem->image !!}">
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Link download</th>
-                        <th>View online</th>
-                    </tr>
-                    @foreach($tempLambs as $tempLamb)
-                        @foreach($tempLamb as $lamb)
+                        @foreach($kiwifruit->kiwifruitscanned as $scan)
                             <tr>
-                                <td>{!! $lamb->name!!}</td>
-                                {{--                            <td><a href="{{ $tempLamb['excel_file'] }}">Download</a></td>--}}
-                                {{--                            <td><a href="{{ $tempLamb['view_online'] }}">View online</a></td>--}}
+                                <td>{!! $scan->sample !!}</td>
+                                <td>{!! $scan->area !!}</td>
+                                <td>{!! $scan->scan !!}</td>
+                                <td>{!! $scan->calories !!}</td>
+                                <td>{!! $scan->carbs !!}</td>
+                                <td>{!! $scan->water !!}</td>
                             </tr>
-                            @endforeach
+                        @endforeach
+                    </table>
+                @endforeach
+                @foreach($scannedItems as $scannedItem)
+                    <h1>NIRScan product</h1>
+                    <h2>{!! $scannedItem->name !!}</h2>
+                    <img width="40%" src="{!! $scannedItem->image !!}">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Link download</th>
+                            <th>View online</th>
+                        </tr>
+                        @foreach($tempLambs as $tempLamb)
+                            @foreach($tempLamb as $lamb)
+                                <tr>
+                                    <td>{!! $lamb->name!!}</td>
+                                    {{--                            <td><a href="{{ $tempLamb['excel_file'] }}">Download</a></td>--}}
+                                    {{--                            <td><a href="{{ $tempLamb['view_online'] }}">View online</a></td>--}}
+                                </tr>
+                                @endforeach
 
-                    @endforeach
+                        @endforeach
 
-                </table>
-            @endforeach
+                    </table>
+                @endforeach
+        @else
+                <p><a href="/upload">Upload</a></p>
+        @endif
         @else
             <div class="title">Spectrometer Data</div>
             <p><a href="/signin">Log in</a></p>

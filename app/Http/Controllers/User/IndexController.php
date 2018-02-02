@@ -14,10 +14,11 @@ class IndexController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $type = Auth::user()->type;
+            $user = Auth::user();
+            $type = $user->type;
 
-            $kiwifruits = Kiwifruit::all();
-            $scannedItems = ScannedItem::where('type', $type)->get();
+            $kiwifruits = Kiwifruit::where('user_id', $user->id)->get();
+            $scannedItems = ScannedItem::where('type', $type)->where('user_id', $user->id)->get();
             $tempLambs = [];
             foreach($scannedItems as $scannedItem){
                 $tempLambs[] = TempLamb::where('scanned_item_id', $scannedItem->id)->get();
@@ -27,7 +28,13 @@ class IndexController extends Controller
         } else {
             return view('pages.user.index');
         }
+    }
 
+    public function getUpload(){
+        return view('pages.user.upload');
+    }
 
+    public function postUpload(){
+        
     }
 }

@@ -19,4 +19,12 @@ class Kiwifruit extends Model
     public function kiwifruitscanned(){
         return $this->hasMany('App\KiwifruitScanned');
     }
+
+    public function type(){
+        return $this->belongsTo('App\Type');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

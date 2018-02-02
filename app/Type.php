@@ -11,4 +11,14 @@ class Type extends Model
     public function user(){
         return $this->hasMany('App\User');
     }
+
+    public function scanned_item()
+    {
+        return $this->hasMany('App\ScannedItem');
+    }
+    public function kiwifruits(){
+        return $this->hasMany('App\Kiwifruit');
+    }
+
+
 }

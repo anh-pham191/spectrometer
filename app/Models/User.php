@@ -87,6 +87,14 @@ class User extends AuthenticatableBase
         return $this->belongsTo('App\Type');
     }
 
+    public function scanned_item(){
+        return $this->hasMany('App\ScannedItem');
+    }
+
+    public function kiwifruits(){
+        return $this->hasMany('App\Kiwifruit');
+    }
+
     public function toAPIArray()
     {
         return [
