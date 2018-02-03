@@ -42,19 +42,16 @@ class MakeScannedItem extends Command
     public function handle()
     {
         Type::create([
-            'name' => "SUPER"
+            'name' => "LAMB",
+            'type' => Type::where('name', 'MEAT')->first()->id
         ]);
         Type::create([
-            'name' => "MEAT"
+            'name' => "BEEF",
+            'type' => Type::where('name', 'MEAT')->first()->id
         ]);
         Type::create([
-            'name' => "FRUIT"
-        ]);
-        Type::create([
-            'name' => "MILK"
-        ]);
-        Type::create([
-            'name' => "HONEY"
+            'name' => "PORK",
+            'type' => Type::where('name', 'MEAT')->first()->id
         ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Kiwifruit;
 use App\Models\User;
 use App\ScannedItem;
 use App\TempLamb;
+use App\Type;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
@@ -31,10 +32,11 @@ class IndexController extends Controller
     }
 
     public function getUpload(){
-        return view('pages.user.upload');
+        $types = Type::where('type', Type::where('name', 'MEAT')->first()->id)->get();
+        return view('pages.user.upload', ['types' => $types]);
     }
 
     public function postUpload(){
-        
+
     }
 }

@@ -6,6 +6,9 @@
 @section('styles')
     @parent
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <style>
         html, body {
             height: 100%;
@@ -65,7 +68,11 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Meat Type</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="password">
+                                    <select class="form-control" name="meat-type">
+                                        @foreach($types as $type)
+                                            <option value="{!! $type->id !!}">{!! $type->name !!}</option>
+                                            @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -79,18 +86,32 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Image</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="password">
+                                    <input type="file" name="image">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Other Informations</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="password">
+                                    <input type="textarea" class="form-control" name="password">
                                 </div>
                             </div>
 
 
+                            <div class="form-group nameOfFile">
+                                <label class="col-md-4 control-label">Scanned part</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="nameOfFile-0">
+                                </div>
+                            </div>
+                            <div class="form-group uploadFile">
+                                <label class="col-md-4 control-label">UploadFile</label>
+                                <div class="col-md-6">
+                                    <input type="file" name="fileToUpload-0">
+                                </div>
+                            </div>
+
+                                <i style="font-size:26px" class="addFile fa fa-plus-circle"></i>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
@@ -104,4 +125,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+
+        $('.addFile').on('click', function(){
+            var leng = $('.uploadFile').length;
+            if(leng < 10){
+                $('.uploadFile').last().after("<div class='form-group nameOfFile'>" +
+                "<label class='col-md-4 control-label'>Scanned part</label>"+
+                "<div class='col-md-6'>" +
+                        "<input type='text' class='form-control' name='nameOfFile-'"+leng+">" +
+                        " </div> </div>"+
+                        "<div class='form-group uploadFile'>" +
+                        "<label class='col-md-4 control-label'>UploadFile</label>" +
+                        "<div class='col-md-6'>" +
+                        "<input type='file' name='fileToUpload-"+leng+"' id='fileToUpload'>" +
+                        " </div> </div>");
+            } else {
+                $('.addFile').hide();
+            }
+
+        })
+    </script>
 @stop
