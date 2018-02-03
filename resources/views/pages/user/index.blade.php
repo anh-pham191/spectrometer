@@ -100,6 +100,7 @@
                     </table>
                 @endforeach
         @else
+            <p>Oops, seems like you haven't uploaded any scanned yet, would you like to start uploading it?</p>
                 <p><a href="/upload">Upload</a></p>
         @endif
         @else

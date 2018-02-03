@@ -55,13 +55,13 @@
                     <div class="panel-heading">Upload your file</div>
                     <div class="panel-body">
 
-                        <form action="{!! action('User\IndexController@postUpload') !!}" method="post" class="form-horizontal" role="form" >
+                        <form action="{!! action('User\IndexController@postUpload') !!}"  enctype="multipart/form-data" method="post" class="form-horizontal" role="form" >
                             {!! csrf_field() !!}
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Name</label>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                    <input type="text" class="form-control" name="name">
                                 </div>
                             </div>
 
@@ -99,7 +99,7 @@
 
 
                             <div class="form-group nameOfFile">
-                                <label class="col-md-4 control-label">Scanned part</label>
+                                <label class="col-md-4 control-label">Scanned part name</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="nameOfFile-0">
                                 </div>
@@ -135,7 +135,7 @@
                 $('.uploadFile').last().after("<div class='form-group nameOfFile'>" +
                 "<label class='col-md-4 control-label'>Scanned part</label>"+
                 "<div class='col-md-6'>" +
-                        "<input type='text' class='form-control' name='nameOfFile-'"+leng+">" +
+                        "<input type='text' class='form-control' name='nameOfFile-"+leng+"'>" +
                         " </div> </div>"+
                         "<div class='form-group uploadFile'>" +
                         "<label class='col-md-4 control-label'>UploadFile</label>" +

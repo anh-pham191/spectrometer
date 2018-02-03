@@ -8,6 +8,7 @@ use App\Models\User;
 use App\ScannedItem;
 use App\TempLamb;
 use App\Type;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
@@ -36,7 +37,7 @@ class IndexController extends Controller
         return view('pages.user.upload', ['types' => $types]);
     }
 
-    public function postUpload(){
-
+    public function postUpload(Request $request){
+        dd($request->all());
     }
 }
