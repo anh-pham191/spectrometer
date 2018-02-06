@@ -55,47 +55,32 @@
                     <div class="panel-heading">Upload your file</div>
                     <div class="panel-body">
 
-                        <form action="{!! action('User\IndexController@postUpload') !!}"  enctype="multipart/form-data" method="post" class="form-horizontal" role="form" >
+                        <form action="{!! action('User\IndexController@postUploadFile') !!}"  enctype="multipart/form-data" method="post" class="form-horizontal" role="form" >
                             {!! csrf_field() !!}
-
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Name</label>
+                                <label class="col-md-4 control-label">Find your meat here</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Meat Type</label>
-                                <div class="col-md-6">
-                                    <select class="form-control" name="type">
-                                        @foreach($types as $type)
-                                            <option value="{!! $type->id !!}">{!! $type->name !!}</option>
-                                            @endforeach
+                                    <select class="form-control" name="item">
+                                        @foreach($scanned_items as $scanned_item)
+                                            <option value="{!! $scanned_item->id !!}">{!! $scanned_item->name !!}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Cut location</label>
+                            <div class="form-group nameOfFile">
+                                <label class="col-md-4 control-label">Scanned part 1</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="location">
+                                    <input type="text" class="form-control" name="nameOfFile[]">
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Image</label>
+                            <div class="form-group uploadFile">
+                                <label class="col-md-4 control-label">File Uploaded 1</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="image">
+                                    <input type="file" name="fileToUpload[]">
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Other Informations</label>
-                                <div class="col-md-6">
-                                    <input type="textarea" class="form-control" name="information">
-                                </div>
-                            </div>
+                            <i style="font-size:26px" class="addFile fa fa-plus-circle"></i>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
@@ -109,6 +94,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+
+        $('.addFile').on('click', function(){
+            var leng = $('.uploadFile').length;
+            var count = leng + 1;
+            if(count < 11){
+                $('.uploadFile').last().after("<div class='form-group nameOfFile'>" +
+                        "<label class='col-md-4 control-label'>Scanned part "+count+"</label>"+
+                        "<div class='col-md-6'>" +
+                        "<input type='text' class='form-control' name='nameOfFile[]'>" +
+                        " </div> </div>"+
+                        "<div class='form-group uploadFile'>" +
+                        "<label class='col-md-4 control-label'>File Uploaded "+count+"</label>" +
+                        "<div class='col-md-6'>" +
+                        "<input type='file' name='fileToUpload[]' id='fileToUpload'>" +
+                        " </div> </div>");
+            } else {
+                $('.addFile').hide();
+            }
+
+        })
+    </script>
 
 
 @stop

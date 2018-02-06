@@ -1,15 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+require_once("lib/Tinify/Exception.php");
+require_once("lib/Tinify/ResultMeta.php");
+require_once("lib/Tinify/Result.php");
+require_once("lib/Tinify/Source.php");
+require_once("lib/Tinify/Client.php");
+require_once("lib/Tinify.php");
 use App\Http\Controllers\Controller;
 use App\Kiwifruit;
 use App\Models\User;
 use App\ScannedItem;
+use App\Spectrometer;
 use App\TempLamb;
 use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -17,14 +24,14 @@ class IndexController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            $type = $user->type;
 
             $kiwifruits = Kiwifruit::where('user_id', $user->id)->get();
-            $scannedItems = ScannedItem::where('type', $type)->where('user_id', $user->id)->get();
+            $scannedItems = ScannedItem::where('user_id', $user->id)->get();
             $tempLambs = [];
             foreach($scannedItems as $scannedItem){
                 $tempLambs[] = TempLamb::where('scanned_item_id', $scannedItem->id)->get();
             }
+
             return view('pages.user.index', [ 'kiwifruits' => $kiwifruits, 'scannedItems' => $scannedItems,'tempLambs' => $tempLambs
             ]);
         } else {
@@ -38,6 +45,42 @@ class IndexController extends Controller
     }
 
     public function postUpload(Request $request){
-        dd($request->all());
+        $path = 'images/'.time() . '.' . $request->image->getClientOriginalExtension();
+        \Tinify\setKey("cRBOIBNVcVK-m_wvOYOFGaErQSkvEIkZ");
+//        \Tinify\fromFile($request->image)->toFile($path);
+        $resizedImage = \Tinify\fromFile($request->image)->resize(array(
+            'method' => "scale",
+            'width' => 200
+        ))->toFile($path);
+
+        ScannedItem::create([
+            'name' => $request->name,
+            'spectrometer_id' => Spectrometer::where('name', 'NIRScan')->first()->id,
+            'image' => $path,
+            'type' => $request->type,
+            'user_id' => Auth::user()->id,
+            'cut_location' => $request->location,
+            'other_information' => $request->information
+        ]);
+        return view('pages.user.index');
+    }
+
+    public function getUploadFile(){
+        $scanned_items = ScannedItem::where('user_id', Auth::user()->id)->get();
+        return view('pages.user.uploadfile', ['scanned_items' => $scanned_items]);
+    }
+
+    public function postUploadFile(Request $request){
+        for($i=0; $i<count($request->fileToUpload); $i++){
+            $filename = time().$i.'.'.$request->fileToUpload[$i]->getClientOriginalExtension();
+            $request->fileToUpload[$i]->move(public_path('csv'), $filename);
+
+            TempLamb::create([
+                'name' => $request->nameOfFile[$i],
+                'excel_file' => 'csv/' . $filename,
+                'scanned_item_id' => $request->item
+            ]);
+        }
+        return view('pages.user.index');
     }
 }

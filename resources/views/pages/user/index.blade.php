@@ -34,6 +34,26 @@
         .title {
             font-size: 96px;
         }
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        tr {
+            margin: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
 @stop
 
@@ -48,7 +68,7 @@
     <div class="container">
         @if(\Illuminate\Support\Facades\Auth::check())
             <h1>Hello {!! \Illuminate\Support\Facades\Auth::user()->email !!}</h1>
-            <a href="{!! \Illuminate\Support\Facades\Auth::logout() !!}">Log out</a>
+{{--            <a href="{!! \Illuminate\Support\Facades\Auth::logout() !!}">Log out</a>--}}
 
         <p class="content">
         @if(count($kiwifruits) + count($scannedItems) > 0 )
@@ -76,29 +96,29 @@
                         @endforeach
                     </table>
                 @endforeach
-                @foreach($scannedItems as $scannedItem)
-                    <h1>NIRScan product</h1>
-                    <h2>{!! $scannedItem->name !!}</h2>
-                    <img width="40%" src="{!! $scannedItem->image !!}">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Link download</th>
-                            <th>View online</th>
-                        </tr>
-                        @foreach($tempLambs as $tempLamb)
-                            @foreach($tempLamb as $lamb)
-                                <tr>
-                                    <td>{!! $lamb->name!!}</td>
-                                    {{--                            <td><a href="{{ $tempLamb['excel_file'] }}">Download</a></td>--}}
-                                    {{--                            <td><a href="{{ $tempLamb['view_online'] }}">View online</a></td>--}}
-                                </tr>
-                                @endforeach
+                <h1>NIRScan product</h1>
+                <p>Do you want to add files to your scanned product?</p>
+                <p><a href="/uploadfile">Upload Files</a></p>
+            <div style="overflow-x:auto; text-align: center">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Cut Location</th>
+                        <th>Other Information</th>
+                    </tr>
+                    <tr>
+                    @foreach($scannedItems as $scannedItem)
+                        <td>{!! $scannedItem->name !!}</td>
+                        <td><img src="{!! $scannedItem->image !!}"></td>
+                        <td>{!! $scannedItem->cut_location !!}</td>
+                        <td>{!! $scannedItem->other_information !!}</td>
+                        <td></td>
+                    @endforeach
+                    </tr>
+                </table>
+            </div>
 
-                        @endforeach
-
-                    </table>
-                @endforeach
         @else
             <p>Oops, seems like you haven't uploaded any scanned yet, would you like to start uploading it?</p>
                 <p><a href="/upload">Upload</a></p>

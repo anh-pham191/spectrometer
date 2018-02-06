@@ -2,7 +2,7 @@
 .env
 .env.*
 !.env.example
-
+public/
 composer.phar
 .DS_Store
 Thumbs.db
