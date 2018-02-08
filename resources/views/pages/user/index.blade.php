@@ -34,22 +34,28 @@
         .title {
             font-size: 96px;
         }
+
         table {
             border-collapse: collapse;
         }
 
         table, th, td {
             border: 1px solid black;
+            padding: 15px;
         }
 
         th {
             text-align: center;
         }
 
-        tr:nth-child(even) {background-color: #f2f2f2;}
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
         tr {
             margin: 10px;
         }
+
         th {
             background-color: #4CAF50;
             color: white;
@@ -68,11 +74,11 @@
     <div class="container">
         @if(\Illuminate\Support\Facades\Auth::check())
             <h1>Hello {!! \Illuminate\Support\Facades\Auth::user()->email !!}</h1>
-{{--            <a href="{!! \Illuminate\Support\Facades\Auth::logout() !!}">Log out</a>--}}
+            {{--            <a href="{!! \Illuminate\Support\Facades\Auth::logout() !!}">Log out</a>--}}
 
-        <p class="content">
-        @if(count($kiwifruits) + count($scannedItems) > 0 )
-            <div class="title">Spectrometer Data</div>
+            <p class="content">
+            @if(count($kiwifruits) + count($scannedItems) > 0 )
+                <div class="title">Spectrometer Data</div>
                 @foreach($kiwifruits as $kiwifruit)
                     <h1>{!! $kiwifruit->name !!}</h1>
                     <table>
@@ -101,30 +107,31 @@
                 <p><a href="/upload">Upload</a></p>
                 <p>Do you want to add files to your scanned product?</p>
                 <p><a href="/uploadfile">Upload Files</a></p>
-            <div style="overflow-x:auto; text-align: center">
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Cut Location</th>
-                        <th>Other Information</th>
-                    </tr>
-                    <tr>
-                    @foreach($scannedItems as $scannedItem)
-                        <td>{!! $scannedItem->name !!}</td>
-                        <td><img src="{!! $scannedItem->image !!}"></td>
-                        <td>{!! $scannedItem->cut_location !!}</td>
-                        <td>{!! $scannedItem->other_information !!}</td>
-                        <td></td>
-                    @endforeach
-                    </tr>
-                </table>
-            </div>
+                <div style="width: 100%; height: 100%">
+                    <table style="margin: 0 auto">
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Cut Location</th>
+                            <th>Other Information</th>
+                        </tr>
+                        @foreach($scannedItems as $key => $scannedItem)
+                            <tr>
+                                <td>{!! $key+1 !!}</td>
+                                <td>{!! $scannedItem->name !!}</td>
+                                <td><img src="{!! $scannedItem->image !!}"></td>
+                                <td>{!! $scannedItem->cut_location !!}</td>
+                                <td>{!! $scannedItem->other_information !!}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
 
-        @else
-            <p>Oops, seems like you haven't uploaded any scanned yet, would you like to start uploading it?</p>
+            @else
+                <p>Oops, seems like you haven't uploaded any scanned yet, would you like to start uploading it?</p>
                 <p><a href="/upload">Upload</a></p>
-        @endif
+            @endif
         @else
             <div class="title">Spectrometer Data</div>
             <p><a href="/signin">Log in</a></p>

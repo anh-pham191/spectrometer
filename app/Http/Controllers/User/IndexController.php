@@ -62,7 +62,16 @@ class IndexController extends Controller
             'cut_location' => $request->location,
             'other_information' => $request->information
         ]);
-        return view('pages.user.index');
+        $user = Auth::user();
+        $kiwifruits = Kiwifruit::where('user_id', $user->id)->get();
+        $scannedItems = ScannedItem::where('user_id', $user->id)->get();
+        $tempLambs = [];
+        foreach($scannedItems as $scannedItem){
+            $tempLambs[] = TempLamb::where('scanned_item_id', $scannedItem->id)->get();
+        }
+
+        return view('pages.user.index', [ 'kiwifruits' => $kiwifruits, 'scannedItems' => $scannedItems,'tempLambs' => $tempLambs
+        ]);
     }
 
     public function getUploadFile(){
@@ -81,6 +90,15 @@ class IndexController extends Controller
                 'scanned_item_id' => $request->item
             ]);
         }
-        return view('pages.user.index');
+        $user = Auth::user();
+        $kiwifruits = Kiwifruit::where('user_id', $user->id)->get();
+        $scannedItems = ScannedItem::where('user_id', $user->id)->get();
+        $tempLambs = [];
+        foreach($scannedItems as $scannedItem){
+            $tempLambs[] = TempLamb::where('scanned_item_id', $scannedItem->id)->get();
+        }
+
+        return view('pages.user.index', [ 'kiwifruits' => $kiwifruits, 'scannedItems' => $scannedItems,'tempLambs' => $tempLambs
+        ]);
     }
 }
