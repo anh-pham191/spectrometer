@@ -97,6 +97,8 @@
                     </table>
                 @endforeach
                 <h1>NIRScan product</h1>
+                <p>Do you want to add your new scanned product?</p>
+                <p><a href="/upload">Upload</a></p>
                 <p>Do you want to add files to your scanned product?</p>
                 <p><a href="/uploadfile">Upload Files</a></p>
             <div style="overflow-x:auto; text-align: center">
