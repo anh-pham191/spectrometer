@@ -98,7 +98,11 @@ class IndexController extends Controller
             $tempLambs[] = TempLamb::where('scanned_item_id', $scannedItem->id)->get();
         }
 
-        return view('pages.user.index', [ 'kiwifruits' => $kiwifruits, 'scannedItems' => $scannedItems,'tempLambs' => $tempLambs
-        ]);
+        return view('pages.user.filedetail', [ 'scanned_item_id' => $request->item]);
     }
+
+    public function getUploadID($id){
+        return view('pages.user.filedetail', [ 'scanned_item_id' => $id]);
+    }
+
 }
