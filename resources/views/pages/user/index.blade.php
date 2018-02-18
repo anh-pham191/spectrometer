@@ -103,9 +103,9 @@
                     </table>
                 @endforeach
                 <h1>NIRScan product</h1>
-                <p>Do you want to add your new scanned product?</p>
+                <p>Do you want to start a new NIR study?</p>
                 <p><a href="/upload">Upload</a></p>
-                <p>Do you want to add files to your scanned product?</p>
+                <p>Do you want to upload new spectroscopy data files?</p>
                 <p><a href="/uploadfile">Upload Files</a></p>
                 <div style="width: 100%; height: 100%">
                     <table style="margin: 0 auto">
