@@ -72,7 +72,8 @@
 
 @section('content')
     <div class="container">
-        <table>
+        <div class="title">NIR file Data for {!! \App\ScannedItem::find($scanned_item_id)->name !!}</div>
+        <table style="margin: 0 auto">
             <tr>
                 <th>Scan ID</th>
                 <th>Study Name</th>
@@ -84,7 +85,7 @@
                     <td>{!! $scanned_item_id !!}</td>
                     <td>{!! \App\ScannedItem::find($scanned_item_id)->name !!}</td>
                     <td>{!! $item->name !!}</td>
-                    <td>{!! $item->excel_file !!}</td>
+                    <td><a href="{!! $item->excel_file !!}">Download link</a></td>
                 </tr>
             @endforeach
         </table>
