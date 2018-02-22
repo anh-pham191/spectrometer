@@ -68,11 +68,17 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Meat Type</label>
                                 <div class="col-md-6">
-                                    <select class="form-control" name="type">
-                                        @foreach($types as $type)
-                                            <option value="{!! $type->id !!}">{!! $type->name !!}</option>
-                                            @endforeach
-                                    </select>
+                                    @if($meat)
+                                        <select class="form-control" name="type">
+                                            @foreach($types as $type)
+                                                <option value="{!! $type->id !!}">{!! $type->name !!}</option>
+                                                @endforeach
+                                        </select>
+                                    @else
+                                        <select class="form-control" name="type">
+                                                <option value="{!! $types->id !!}">{!! $types->name !!}</option>
+                                        </select>
+                                    @endif
                                 </div>
                             </div>
 

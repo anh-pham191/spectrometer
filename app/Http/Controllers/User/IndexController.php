@@ -39,8 +39,15 @@ class IndexController extends Controller
 
     public function getUpload()
     {
-        $types = Type::where('type', Type::where('name', 'MEAT')->first()->id)->get();
-        return view('pages.user.upload', ['types' => $types]);
+        $meatID = Type::where('name', 'MEAT')->first()->id;
+        if(Auth::user()->type == $meatID) {
+            $types = Type::where('type', Type::where('name', 'MEAT')->first()->id)->get();
+            $meat = true;
+        } else {
+            $types = Type::find(Auth::user()->type);
+            $meat = false;
+        }
+        return view('pages.user.upload', ['types' => $types, 'meat' => $meat]);
     }
 
     public function postUpload(Request $request)
