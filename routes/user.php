@@ -27,7 +27,7 @@
     });
     Route::get('/logout', '\App\Http\Controllers\User\AuthController@logout');
 
-
+    Route::get('/searchjson', 'User\IndexController@search');
 //    \Route::group(['middleware' => ['user.auth']], function () {
 //
 //    });

@@ -13,6 +13,7 @@ use App\ScannedItem;
 use App\Spectrometer;
 use App\TempLamb;
 use App\Type;
+use Google\Auth\Cache\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -134,4 +135,13 @@ class IndexController extends Controller
         return view('pages.user.filedetail', ['scanned_item_id' => $id]);
     }
 
+    public function search(){
+        $file= TempLamb::find(34)->excel_file;
+        $csv= file_get_contents($file);
+
+        $array = array_map("str_getcsv", explode("\n", $csv));
+
+        $json = json_encode($array);
+        print_r($json);
+    }
 }
