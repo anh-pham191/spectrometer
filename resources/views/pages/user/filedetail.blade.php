@@ -71,9 +71,9 @@
 @stop
 
 @section('content')
-    <div class="container" style="padding-top:100px">
-        <div class="title">NIR file Data for {!! \App\ScannedItem::find($scanned_item_id)->name !!}</div>
-        <table style="margin: 0 auto">
+    <div class="container" style="padding-top:100px; text-align: center">
+        <h1>NIR file Data for {!! \App\ScannedItem::find($scanned_item_id)->name !!}</h1>
+        <table style="margin: 0 auto; margin-bottom: 70px">
             <tr>
                 <th>Scan ID</th>
                 <th>Study Name</th>
@@ -90,4 +90,5 @@
             @endforeach
         </table>
     </div>
+
 @stop

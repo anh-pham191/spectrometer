@@ -152,7 +152,7 @@
                         @foreach($scannedItems as $key => $scannedItem)
                             <tr>
                                 <td>{!! $key+1 !!}</td>
-                                <td>{!! $scannedItem->name !!}</td>
+                                <td><a href="/upload/{{$scannedItem->id}}">{!! $scannedItem->name !!}</a></td>
                                 <td><img src="{!! $scannedItem->image !!}"></td>
                                 <td>{!! $scannedItem->cut_location !!}</td>
                                 <td>{!! $scannedItem->other_information !!}</td>

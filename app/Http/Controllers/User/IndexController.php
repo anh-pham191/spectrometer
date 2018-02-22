@@ -127,7 +127,6 @@ class IndexController extends Controller
         } else {
             return back();
         }
-
     }
 
     public function getUploadID($id)
