@@ -52,4 +52,10 @@ class AuthController extends Controller
 
         return \RedirectHelper::intended(action('User\IndexController@index'));
     }
+
+    public function logout(){
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
+    }
 }

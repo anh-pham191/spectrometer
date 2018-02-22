@@ -71,7 +71,7 @@
 @stop
 
 @section('content')
-    <div class="container">
+    <div class="container" style="padding-top:100px">
         <div class="title">NIR file Data for {!! \App\ScannedItem::find($scanned_item_id)->name !!}</div>
         <table style="margin: 0 auto">
             <tr>

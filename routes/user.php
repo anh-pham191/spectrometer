@@ -25,6 +25,8 @@
         \Route::post('signup', 'User\AuthController@postSignUp');
 
     });
+    Route::get('/logout', '\App\Http\Controllers\User\AuthController@logout');
+
 
 //    \Route::group(['middleware' => ['user.auth']], function () {
 //
