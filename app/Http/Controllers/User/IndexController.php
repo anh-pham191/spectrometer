@@ -39,6 +39,9 @@ class IndexController extends Controller
 
     public function getUpload()
     {
+        if(!Auth::check()){
+            return back();
+        }
         $meatID = Type::where('name', 'MEAT')->first()->id;
         if(Auth::user()->type == $meatID) {
             $types = Type::where('type', Type::where('name', 'MEAT')->first()->id)->get();
@@ -86,6 +89,9 @@ class IndexController extends Controller
 
     public function getUploadFile()
     {
+        if(!Auth::check()){
+            return back();
+        }
         $scanned_items = ScannedItem::where('user_id', Auth::user()->id)->get();
         return view('pages.user.uploadfile', ['scanned_items' => $scanned_items]);
     }
