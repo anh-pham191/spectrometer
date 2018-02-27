@@ -132,7 +132,7 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <span class="glyphicon glyphicon-apple" style="font-size: 60px"></span>
                         <h2 class="section-heading">Do you want to upload new spectroscopy data files?</h2>
-                        <a href="/upload" class="btn btn-primary btn-lg">Upload Files</a>
+                        <a href="/uploadfile" class="btn btn-primary btn-lg">Upload Files</a>
 
                     </div>
                 </div>

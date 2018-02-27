@@ -7,7 +7,9 @@ require_once("lib/Tinify/Result.php");
 require_once("lib/Tinify/Source.php");
 require_once("lib/Tinify/Client.php");
 require_once("lib/Tinify.php");
+use App\Contact;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
 use App\Kiwifruit;
 use App\ScannedItem;
 use App\Spectrometer;
@@ -16,6 +18,7 @@ use App\Type;
 use Google\Auth\Cache\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
@@ -143,5 +146,22 @@ class IndexController extends Controller
 
         $json = json_encode($array);
         print_r($json);
+    }
+
+    public function getContact(){
+        return view('pages.user.contact');
+    }
+
+    public function postContact(ContactRequest $request){
+        $contact = Contact::create($request->all());
+        $to = 'tuananh191194@gmail.com';
+        $subject = $contact->subject;
+        $message = 'You got a new contact from www.nir-data.com by ' . $contact->name . ' with phone number of ' . $contact->phone . ' and the email address appeared as '
+        . $contact->email . '. Please reply to this email to send email address to the person who contacts. Below is the message'."\r\n" .$contact->message;
+        $headers = 'From: <webmaster@example.com>'. "\r\n" .
+            'Reply-To: ' . $contact->email . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers);
+
     }
 }

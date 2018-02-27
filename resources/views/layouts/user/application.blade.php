@@ -69,7 +69,7 @@ Although you can use them, for a more unique website, replace these images with 
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <span class="glyphicon glyphicon-fire"></span>
                 LOGO
             </a>
@@ -77,7 +77,7 @@ Although you can use them, for a more unique website, replace these images with 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
+                <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
@@ -87,7 +87,7 @@ Although you can use them, for a more unique website, replace these images with 
                     <a href="/uploadfile">Upload Files </a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
                 @if(\Illuminate\Support\Facades\Auth::check())
                 <li>

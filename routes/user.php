@@ -7,6 +7,8 @@
     \Route::post('/upload', 'User\IndexController@postUpload');
     \Route::get('/uploadfile', 'User\IndexController@getUploadFile');
     \Route::post('/uploadfile', 'User\IndexController@postUploadFile');
+    \Route::get('/contact', 'User\IndexController@getContact');
+    \Route::post('/contact', 'User\IndexController@postContact');
 
     \Route::group(['middleware' => ['user.guest']], function () {
         \Route::get('signin', 'User\AuthController@getSignIn');
