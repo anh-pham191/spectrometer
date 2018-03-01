@@ -85,7 +85,7 @@
                     <td>{!! $scanned_item_id !!}</td>
                     <td>{!! \App\ScannedItem::find($scanned_item_id)->name !!}</td>
                     <td>{!! $item->name !!}</td>
-                    <td><a href="{!! $item->excel_file !!}">Download link</a></td>
+                    <td><a href="../{!! $item->excel_file !!}">Download link</a></td>
                 </tr>
             @endforeach
         </table>
