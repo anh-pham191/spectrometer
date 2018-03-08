@@ -44,7 +44,7 @@ class IndexController extends Controller
     public function getUpload()
     {
         if(!Auth::check()){
-            return back();
+            return view('pages.user.auth.signin');
         }
         $meatID = Type::where('name', 'MEAT')->first()->id;
         if(Auth::user()->type == $meatID) {
@@ -94,7 +94,7 @@ class IndexController extends Controller
     public function getUploadFile()
     {
         if(!Auth::check()){
-            return back();
+            return view('pages.user.auth.signin');
         }
         $scanned_items = ScannedItem::where('user_id', Auth::user()->id)->get();
         return view('pages.user.uploadfile', ['scanned_items' => $scanned_items]);
@@ -162,7 +162,7 @@ class IndexController extends Controller
             'Reply-To: ' . $contact->email . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $message, $headers);
-        return back();
+        return view('pages.user.getcontact');
 
     }
 }
