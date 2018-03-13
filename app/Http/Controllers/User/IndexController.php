@@ -135,7 +135,7 @@ class IndexController extends Controller
         return view('pages.user.filedetail', ['scanned_item_id' => $id]);
     }
 
-    public function search(){
+    public function searchjson(){
         $file= TempLamb::find(34)->excel_file;
         $csv= file_get_contents($file);
 
@@ -161,5 +161,14 @@ class IndexController extends Controller
         mail($to, $subject, $message, $headers);
         return view('pages.user.getcontact');
 
+    }
+
+    public function search(){
+        return view('pages.user.search');
+    }
+
+    public function postSearch(Request $request){
+        $items = TempLamb::whereDate('created_at', '>=', $request->start_date)->where('created_at', '<=' ,$request->end_date)->get();
+        dd($items);
     }
 }

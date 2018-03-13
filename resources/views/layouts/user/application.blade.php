@@ -90,6 +90,9 @@ Although you can use them, for a more unique website, replace these images with 
                     <a href="/contact">Contact</a>
                 </li>
                 @if(\Illuminate\Support\Facades\Auth::check())
+                    <li>
+                        <a href="{{ url('/search') }}">Search Data</a>
+                    </li>
                 <li>
                     <a href="{{ url('/logout') }}"> Log out </a>
                 </li>
@@ -108,7 +111,7 @@ Although you can use them, for a more unique website, replace these images with 
     <div class="contact">
         <div class="container">
             <p class="section-heading">Contact Us</p>
-            <p><span class="glyphicon glyphicon-envelope"></span><br> info@example.com</p>
+            <p><span class="glyphicon glyphicon-envelope"></span><br>harvey.ho@auckland.ac.nz</p>
         </div>
     </div>
 </footer>
