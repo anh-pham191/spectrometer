@@ -200,7 +200,7 @@
                     <div class="col-sm-6">
                         <h2 class="section-header">Upload your own study</h2>
                         <p class="lead text-muted">Click here to upload your own NIR study</p>
-                        <a href="#" class="btn btn-primary btn-lg">Upload now</a>
+                        <a href="/upload" class="btn btn-primary btn-lg">Upload now</a>
                     </div>
 
                 </div>
@@ -216,7 +216,7 @@
                         <h2 class="section-header">Adding files to your NIR study</h2>
                         <p class="lead text-light">Each study has dozen of files to be inspected, upload now to start
                             studying</p>
-                        <a href="#" class="btn btn-default btn-lg">Upload your files</a>
+                        <a href="/uploadfile" class="btn btn-default btn-lg">Upload your files</a>
                     </div>
                     <div class="col-sm-6">
                         <img class="img-responsive img-circle center-block" src="../../../images/iphone.jpg" alt="">

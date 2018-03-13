@@ -69,15 +69,15 @@
                             </div>
 
                             <div class="form-group nameOfFile">
-                                <label class="col-md-4 control-label">Description 1</label>
+                                <label class="col-md-4 control-label">Description</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="nameOfFile[]">
+                                    <input type="text" class="form-control" name="nameOfFile">
                                 </div>
                             </div>
                             <div class="form-group uploadFile">
-                                <label class="col-md-4 control-label">File Uploaded 1</label>
+                                <label class="col-md-4 control-label">File Uploaded</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="fileToUpload[]">
+                                    <input type="file" name="fileToUpload[]" multiple>
                                 </div>
                             </div>
                             <i style="font-size:26px" class="addFile fa fa-plus-circle"></i>
@@ -95,29 +95,29 @@
         </div>
     </div>
 
-    <script>
+    {{--<script>--}}
 
 
-        $('.addFile').on('click', function(){
-            var leng = $('.uploadFile').length;
-            var count = leng + 1;
-            if(count < 11){
-                $('.uploadFile').last().after("<div class='form-group nameOfFile'>" +
-                        "<label class='col-md-4 control-label'>Scanned part "+count+"</label>"+
-                        "<div class='col-md-6'>" +
-                        "<input type='text' class='form-control' name='nameOfFile[]'>" +
-                        " </div> </div>"+
-                        "<div class='form-group uploadFile'>" +
-                        "<label class='col-md-4 control-label'>File Uploaded "+count+"</label>" +
-                        "<div class='col-md-6'>" +
-                        "<input type='file' name='fileToUpload[]' id='fileToUpload'>" +
-                        " </div> </div>");
-            } else {
-                $('.addFile').hide();
-            }
+        {{--$('.addFile').on('click', function(){--}}
+            {{--var leng = $('.uploadFile').length;--}}
+            {{--var count = leng + 1;--}}
+            {{--if(count < 11){--}}
+                {{--$('.uploadFile').last().after("<div class='form-group nameOfFile'>" +--}}
+                        {{--"<label class='col-md-4 control-label'>Scanned part "+count+"</label>"+--}}
+                        {{--"<div class='col-md-6'>" +--}}
+                        {{--"<input type='text' class='form-control' name='nameOfFile[]'>" +--}}
+                        {{--" </div> </div>"+--}}
+                        {{--"<div class='form-group uploadFile'>" +--}}
+                        {{--"<label class='col-md-4 control-label'>File Uploaded "+count+"</label>" +--}}
+                        {{--"<div class='col-md-6'>" +--}}
+                        {{--"<input type='file' name='fileToUpload[]' id='fileToUpload'>" +--}}
+                        {{--" </div> </div>");--}}
+            {{--} else {--}}
+                {{--$('.addFile').hide();--}}
+            {{--}--}}
 
-        })
-    </script>
+        {{--})--}}
+    {{--</script>--}}
 
 
 @stop

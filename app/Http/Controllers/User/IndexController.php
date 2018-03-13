@@ -103,15 +103,12 @@ class IndexController extends Controller
     public function postUploadFile(Request $request)
     {
         if ($request->fileToUpload !== null) {
-
-            for ($i = 0; $i < count($request->nameOfFile); $i++) {
+            for ($i = 0; $i < count($request->fileToUpload); $i++) {
                 if (isset($request->fileToUpload[$i])) {
-
                     $filename = time() . $i . '.' . $request->fileToUpload[$i]->getClientOriginalExtension();
                     $request->fileToUpload[$i]->move(public_path('csv'), $filename);
-
                     TempLamb::create([
-                        'name' => $request->nameOfFile[$i],
+                        'name' => $request->nameOfFile,
                         'excel_file' => 'csv/' . $filename,
                         'scanned_item_id' => $request->item
                     ]);
