@@ -5,6 +5,14 @@ body {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
+#logo{
+    background-image: url('../../../../images/LOGO_2.png') !important;
+    background-size:contain;
+    height: 0;
+    width: 20px;
+    margin-top: 10px;
+}
+
 a {
     color: yellowgreen;
     -webkit-transition: all .35s;

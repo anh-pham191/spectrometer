@@ -195,7 +195,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <img class="img-responsive img-circle center-block" src="../../../images/microphone.jpg" alt="">
+                        <img class="img-responsive img-circle center-block" src="../../../images/nirscan_nano_image.png" alt="">
                     </div>
                     <div class="col-sm-6">
                         <h2 class="section-header">Upload your own study</h2>

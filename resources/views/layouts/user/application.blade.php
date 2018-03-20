@@ -69,9 +69,8 @@ Although you can use them, for a more unique website, replace these images with 
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-fire"></span>
-                LOGO
+            <a class="navbar-brand" id="logo" href="/"><span style="padding-left:20px">Spectrometer</span>
+
             </a>
         </div>
         <!-- Navbar links -->
