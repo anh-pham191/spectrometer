@@ -1,16 +1,16 @@
 {{--<!DOCTYPE html>--}}
 {{--<html>--}}
 {{--<head>--}}
-    {{--<meta charset="utf-8">--}}
-    {{--<meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
-    {{--<title>@yield('title', config('site.name', ''))</title>--}}
-    {{--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">--}}
-    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">--}}
-    {{--@include('layouts.user.metadata')--}}
-    {{--@include('layouts.user.styles')--}}
-    {{--@section('styles')--}}
-    {{--@show--}}
-    {{--<meta name="csrf-token" content="{!! csrf_token() !!}">--}}
+{{--<meta charset="utf-8">--}}
+{{--<meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
+{{--<title>@yield('title', config('site.name', ''))</title>--}}
+{{--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">--}}
+{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">--}}
+{{--@include('layouts.user.metadata')--}}
+{{--@include('layouts.user.styles')--}}
+{{--@section('styles')--}}
+{{--@show--}}
+{{--<meta name="csrf-token" content="{!! csrf_token() !!}">--}}
 {{--</head>--}}
 {{--<body class="{!! isset($bodyClasses) ? $bodyClasses : '' !!}">--}}
 {{--@if( isset($noFrame) && $noFrame == true )--}}
@@ -41,7 +41,8 @@ Although you can use them, for a more unique website, replace these images with 
 
     <!-- Bootstrap Core CSS -->
     {{--<link href="css/bootstrap.min.css" rel="stylesheet">--}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="../static/user/css/custom.css" rel="stylesheet">
 
@@ -53,7 +54,8 @@ Although you can use them, for a more unique website, replace these images with 
     <![endif]-->
 
     <!-- Custom Fonts from Google -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -92,10 +94,10 @@ Although you can use them, for a more unique website, replace these images with 
                     <li>
                         <a href="{{ url('/search') }}">Search Data</a>
                     </li>
-                <li>
-                    <a href="{{ url('/logout') }}"> Log out </a>
-                </li>
-                    @endif
+                    <li>
+                        <a href="{{ url('/logout') }}"> Log out </a>
+                    </li>
+                @endif
             </ul>
 
         </div><!-- /.navbar-collapse -->
@@ -105,17 +107,18 @@ Although you can use them, for a more unique website, replace these images with 
 
 
 <footer class="page-footer">
-
-    <!-- Contact Us -->
-    <div class="contact">
-        <div class="container">
-            <p class="section-heading">Contact Us</p>
-            <p><span class="glyphicon glyphicon-envelope"></span><br>harvey.ho@auckland.ac.nz</p>
+    <a style="display: block" href="/contact">
+        <!-- Contact Us -->
+        <div class="contact">
+            <div class="container">
+                <p class="section-heading">Contact Us</p>
+                <p><span class="glyphicon glyphicon-envelope"></span><br>harvey.ho@auckland.ac.nz</p>
+            </div>
         </div>
-    </div>
+    </a>
 </footer>
 @section('scripts')
-<!-- jQuery -->
+        <!-- jQuery -->
 <script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
