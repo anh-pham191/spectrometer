@@ -10,6 +10,8 @@ require_once("lib/Tinify.php");
 use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
+use App\Http\Requests\ScanItemRequest;
+use App\Http\Requests\TempLambRequest;
 use App\Kiwifruit;
 use App\ScannedItem;
 use App\Spectrometer;
@@ -57,7 +59,7 @@ class IndexController extends Controller
         return view('pages.user.upload', ['types' => $types, 'meat' => $meat]);
     }
 
-    public function postUpload(Request $request)
+    public function postUpload(ScanItemRequest $request)
     {
         if ($request->file('image') !== null) {
             $path = 'images/' . time() . '.' . $request->image->getClientOriginalExtension();
@@ -83,8 +85,7 @@ class IndexController extends Controller
             foreach ($scannedItems as $scannedItem) {
                 $tempLambs[] = TempLamb::where('scanned_item_id', $scannedItem->id)->get();
             }
-            return view('pages.user.index', ['kiwifruits' => $kiwifruits, 'scannedItems' => $scannedItems, 'tempLambs' => $tempLambs
-            ]);
+            return redirect()->back()->with('message', 'Successfully add new study');
         } else {
             return back();
         }
@@ -100,7 +101,7 @@ class IndexController extends Controller
         return view('pages.user.uploadfile', ['scanned_items' => $scanned_items]);
     }
 
-    public function postUploadFile(Request $request)
+    public function postUploadFile(TempLambRequest $request)
     {
         if ($request->fileToUpload !== null) {
             for ($i = 0; $i < count($request->fileToUpload); $i++) {
