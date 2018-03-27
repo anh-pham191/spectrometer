@@ -169,7 +169,8 @@ class IndexController extends Controller
     }
 
     public function postSearch(Request $request){
-        $items = TempLamb::whereDate('created_at', '>=', $request->start_date)->where('created_at', '<=' ,$request->end_date)->get();
-        dd($items);
+        $items = ScannedItem::whereDate('created_at', '>=', $request->start_date)->where('created_at', '<=' ,$request->end_date)->get();
+
+        return view('pages.user.postSearch', ['items' => $items]);
     }
 }

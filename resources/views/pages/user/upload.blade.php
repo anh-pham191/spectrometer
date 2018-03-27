@@ -164,12 +164,10 @@
         </div>
     </div>
     <script>
-
         $('#upload-nir').submit(function() {
             $('#loading-gif').show(); // show animation
             $('.panel-default').css('-webkit-filter', 'blur(50px').css('filter', 'blur(50px)');
             return true; // allow regular form submission
-
         });
     </script>
 @stop
