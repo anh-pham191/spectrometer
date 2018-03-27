@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Message</label>
                                 <div class="col-md-6">
-                                    <textarea  class="form-control" name="message"></textarea>
+                                    <textarea style="height: 250px;" class="form-control" name="message"></textarea>
                                 </div>
                             </div>
 

@@ -120,7 +120,7 @@
             <div class="header-content">
                 <div class="header-content-inner">
                     <h1>Spectrometer Data</h1>
-                    <p>Do you want to start a new NIR study ?</p>
+                    <p style="background-color: black; font-size: 26px; width: 50%;;">Do you want to start a new NIR study ?</p>
                     <a href="/upload" class="btn btn-primary btn-lg">Upload Now</a>
 
                 </div>
@@ -218,7 +218,7 @@
                         <a href="/uploadfile" class="btn btn-default btn-lg">Upload your files</a>
                     </div>
                     <div class="col-sm-6">
-                        <img class="img-responsive img-circle center-block" src="../../../images/iphone.jpg" alt="">
+                        <img class="img-responsive img-circle center-block" src="../../../images/spectroscopy.png" alt="">
                     </div>
 
                 </div>
