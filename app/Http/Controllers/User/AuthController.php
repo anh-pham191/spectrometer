@@ -49,8 +49,7 @@ class AuthController extends Controller
         if (empty($user)) {
             return redirect()->action('User\AuthController@getSignUp');
         }
-
-        return \RedirectHelper::intended(action('User\IndexController@index'));
+        return \RedirectHelper::intended(action('User\IndexController@index'))->with('message', 'Register successfully!');
     }
 
     public function logout(){

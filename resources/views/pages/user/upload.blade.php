@@ -15,6 +15,8 @@
         }
 
         body {
+            -webkit-filter: blur(50px);
+            filter: blur(50px);
             margin: 0;
             padding: 0;
             width: 100%;
@@ -37,6 +39,22 @@
         .title {
             font-size: 96px;
         }
+
+
+
+        #loading-gif {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(51, 51, 51, 0.59);
+            z-index: 99;
+        }
+
+        .loading-img {
+
+        }
     </style>
 @stop
 
@@ -48,7 +66,22 @@
 @stop
 
 @section('content')
+
     <div class="container" style="padding-top:100px">
+        <div id="loading-gif" style="display:none; position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;">
+            <img src="/images/reload.gif"
+
+                 alt="" class="loading-img"/></div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -70,21 +103,21 @@
                                     {{ session()->get('message') }}
                                 </div>
                             @endif
-                        <form action="{!! action('User\IndexController@postUpload') !!}"  enctype="multipart/form-data" method="post" class="form-horizontal" role="form" >
+                        <form id="upload-nir" action="{!! action('User\IndexController@postUpload') !!}"  enctype="multipart/form-data" method="post" class="form-horizontal" role="form" >
                             {!! csrf_field() !!}
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" value="{!! old('name') !!}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Meat Type</label>
+                                <label class="col-md-4 control-label">Food Type</label>
                                 <div class="col-md-6">
                                     @if($meat)
-                                        <select class="form-control" name="type">
+                                        <select class="form-control" name="type" value="{!! old('type') !!}">
                                             @foreach($types as $type)
                                                 <option value="{!! $type->id !!}">{!! $type->name !!}</option>
                                                 @endforeach
@@ -98,23 +131,23 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Cut location</label>
+                                <label class="col-md-4 control-label">Sample location</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="location">
+                                    <input type="text" class="form-control" name="location" value="{!! old('location') !!}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Image</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="image">
+                                    <input type="file" name="image" value="{!! old('image') !!}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Other Informations</label>
                                 <div class="col-md-6">
-                                    <input type="textarea" class="form-control" name="information">
+                                    <input type="textarea" class="form-control" name="information" value="{!! old('information') !!}">
                                 </div>
                             </div>
 
@@ -130,6 +163,15 @@
             </div>
         </div>
     </div>
+    <script>
 
+        $('#upload-nir').submit(function() {
+            $('#loading-gif').show(); // show animation
+            $('.panel-default').css('-webkit-filter', 'blur(50px').css('filter', 'blur(50px)');
+            return true; // allow regular form submission
 
+        });
+    </script>
 @stop
+
+

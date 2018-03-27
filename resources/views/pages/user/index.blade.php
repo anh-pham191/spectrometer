@@ -120,7 +120,12 @@
             <div class="header-content">
                 <div class="header-content-inner">
                     <h1>Spectrometer Data</h1>
-                    <p style="background-color: black; font-size: 26px; width: 50%;;">Do you want to start a new NIR study ?</p>
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    <p style="background-color: black; font-size: 26px; width: 50%;">Do you want to start a new NIR study ?</p>
                     <a href="/upload" class="btn btn-primary btn-lg">Upload Now</a>
 
                 </div>
@@ -130,6 +135,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
+
                         <h2 class="section-heading">Do you want to upload new spectroscopy data files?</h2>
                         <a href="/uploadfile" class="btn btn-primary btn-lg">Upload Files</a>
 
@@ -170,7 +176,7 @@
             <div class="header-content">
                 <div class="header-content-inner">
                     <h1>Spectrometer Data</h1>
-                    <p>Do you want to start a new NIR study ?</p>
+                    <p style="background-color: black; font-size: 26px; width: 50%;;">Do you want to start a new NIR study ?</p>
                     <a href="/signup" class="btn btn-primary btn-lg">Register</a>
                     <a href="/signin" class="btn btn-primary btn-lg">Login</a>
                 </div>

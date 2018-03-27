@@ -43,6 +43,8 @@ Although you can use them, for a more unique website, replace these images with 
     {{--<link href="css/bootstrap.min.css" rel="stylesheet">--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="../static/user/css/custom.css" rel="stylesheet">
 
@@ -51,6 +53,7 @@ Although you can use them, for a more unique website, replace these images with 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 
     <!-- Custom Fonts from Google -->
@@ -106,20 +109,18 @@ Although you can use them, for a more unique website, replace these images with 
 @yield('content')
 
 
-<footer class="page-footer">
+<footer class="page-footer" style="padding-top: 100px">
     <a style="display: block" href="/contact">
         <!-- Contact Us -->
         <div class="contact">
             <div class="container">
                 <p class="section-heading">Contact Us</p>
-                <p><span class="glyphicon glyphicon-envelope"></span><br>harvey.ho@auckland.ac.nz</p>
             </div>
         </div>
     </a>
 </footer>
 @section('scripts')
         <!-- jQuery -->
-<script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>

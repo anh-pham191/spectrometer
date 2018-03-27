@@ -37,10 +37,8 @@ class SignUpRequest extends BaseRequest
     public function messages()
     {
         return [
-            'email.required' => '',
-            'email.email' => '',
-            'password.required' => '',
-            'password.min' => '',
+            'email.required' => 'Email address is required',
+            'password.required' => 'Password is required',
         ];
     }
 }
