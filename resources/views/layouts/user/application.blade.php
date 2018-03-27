@@ -71,7 +71,7 @@ Although you can use them, for a more unique website, replace these images with 
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="logo" href="/"><span style="padding-left:20px">Spectrometer</span>
+            <a class="navbar-brand" id="logo" href="/"><span style="padding-left:20px">NIRDATA</span>
 
             </a>
         </div>

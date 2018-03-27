@@ -72,7 +72,7 @@
 
 @section('content')
     <div class="container" style="padding-top:100px; text-align: center; padding-bottom: 150px;">
-        <h1 >Thanks for your guery, we will reply to your message as soon as possible.</h1>
+        <h1 >Thanks for your query, we will reply to your message as soon as possible.</h1>
 
     </div>
 
