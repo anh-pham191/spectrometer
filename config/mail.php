@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.org'),
+    'host' => 'smtp.gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' =>  587,
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'tuananh191194@gmail.com', 'name' => env('MAIL_FROM_NAME'), null],
+    'from' => ['address' => 'nirdata.spectro@gmail.com', 'name' => env('MAIL_FROM_NAME'), null],
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => 'zizashpdanycwjef',
 
     /*
     |--------------------------------------------------------------------------

@@ -154,12 +154,20 @@ class IndexController extends Controller
         $contact = Contact::create($request->all());
         $to = 'tuananh191194@gmail.com';
         $subject = $contact->subject;
-        $message = 'You got a new contact from www.nir-data.com by ' . $contact->name . ' with phone number of ' . $contact->phone . ' and the email address appeared as '
-        . $contact->email . '. Please reply to this email to send email address to the person who contacts. Below is the message'."\r\n" .$contact->message;
-        $headers = 'From: <webmaster@example.com>'. "\r\n" .
-            'Reply-To: ' . $contact->email . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($to, $subject, $message, $headers);
+        $phone = $contact->phone;
+        $email = $contact->email;
+        $name = $contact->name;
+        $mess = $contact->message;
+        $exception = 'sdf';
+        Mail::send('pages.user.mail', ['subject' => $subject, 'name' => $name, 'mess' => $mess , 'phone' => $phone, 'email' => $email], function ($message) {
+            $message->to('tuananh191194@gmail.com')->subject('New contact submission from nir-data.com');
+        });
+//        $message = 'You got a new contact from www.nir-data.com by ' . $contact->name . ' with phone number of ' . $contact->phone . ' and the email address appeared as '
+//        . $contact->email . '. Please reply to this email to send email address to the person who contacts. Below is the message'."\r\n" .$contact->message;
+//        $headers = 'From: <webmaster@example.com>'. "\r\n" .
+//            'Reply-To: ' . $contact->email . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//        mail($to, $subject, $message, $headers);
         return view('pages.user.getcontact');
 
     }
