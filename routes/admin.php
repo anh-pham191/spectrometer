@@ -13,6 +13,7 @@
 
     \Route::group(['middleware' => ['admin.auth']], function () {
         \Route::get('/', 'Admin\IndexController@index');
+        \Route::get('contact', 'Admin\IndexController@contact');
 
         \Route::get('/me', 'Admin\MeController@index');
         \Route::put('/me', 'Admin\MeController@update');

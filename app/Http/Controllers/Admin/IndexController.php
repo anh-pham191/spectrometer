@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Kiwifruit;
 use App\ScannedItem;
@@ -18,5 +19,10 @@ class IndexController extends Controller
         $tempLambs = TempLamb::all();
         return view('pages.admin.index', [ 'kiwifruits' => $kiwifruits, 'scannedItems' => $scannedItems,'tempLambs' => $tempLambs
         ]);
+    }
+
+    public function contact(){
+        $contacts = Contact::all();
+        return view('pages.admin.contact', ['contacts' => $contacts]);
     }
 }
