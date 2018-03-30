@@ -160,11 +160,9 @@ class IndexController extends Controller
         $mess = $contact->message;
         $exception = 'sdf';
         Mail::send('pages.user.mail', ['subject' => $subject, 'name' => $name, 'mess' => $mess , 'phone' => $phone, 'email' => $email], function ($message) {
-            $message->to('tuananh191194@gmail.com')->subject('New contact submission from nir-data.com');
+            $message->to('tuananh191194@gmail.com', 'harvey.nz@gmail.com')->subject('New contact submission from nir-data.com');
         });
-//       
         return view('pages.user.getcontact');
-
     }
 
     public function search(){
