@@ -42,7 +42,7 @@ class AuthController extends Controller
 
     public function getSignUp()
     {
-        $types = Type::where('id','!=', 1)->get();
+        $types = Type::all();
         return view('pages.user.auth.signup', ['types' => $types
         ]);
     }

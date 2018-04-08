@@ -49,8 +49,12 @@ class IndexController extends Controller
             return view('pages.user.auth.signin');
         }
         $meatID = Type::where('name', 'MEAT')->first()->id;
+        $superID = Type::where('name', 'SUPER')->first()->id;
         if(Auth::user()->type == $meatID) {
             $types = Type::where('type', Type::where('name', 'MEAT')->first()->id)->get();
+            $meat = true;
+        } elseif(Auth::user()->type == $superID){
+            $types = Type::where('id','!=', 1)->get();
             $meat = true;
         } else {
             $types = Type::find(Auth::user()->type);
