@@ -30,7 +30,11 @@ class AuthController extends Controller
     {
         $user = $this->userService->signIn($request->all());
         if (empty($user)) {
-            return redirect()->action('User\AuthController@getSignIn');
+            return redirect()->action('User\AuthController@getSignIn')->withErrors(
+                [
+                    'errors' => 'Wrong Password',
+                ]
+            );
         }
 
         return \RedirectHelper::intended(action('User\IndexController@index'));

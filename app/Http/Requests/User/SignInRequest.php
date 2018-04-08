@@ -32,9 +32,9 @@ class SignInRequest extends BaseRequest
     public function messages()
     {
         return [
-            'email.required' => '',
+            'email.required' => 'Email message is required',
             'email.email' => '',
-            'password.required' => '',
+            'password.required' => 'Password is required',
             'password.min' => '',
         ];
     }
